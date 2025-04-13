@@ -9,6 +9,8 @@ function App() {
         animate={{
           scale: [1, 1.5, 1],  
           opacity: [0.8, 1, 0.8],
+          filter: ["blur(0.5px)", "blur(1.5px)", "blur(0.5px)"],
+
         }}
         transition={{
           duration: 4,
