@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./index.css";
-import { div } from "framer-motion/client";
+import { JSX } from "react/jsx-runtime";
 
 type BreathStage = {
     label: string;

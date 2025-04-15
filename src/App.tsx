@@ -1,23 +1,10 @@
-import { motion } from "framer-motion";
 import "./App.css";
+import Breath478 from "./Breath478";
 
 function App() {
   return (
     <div>
-      <motion.div
-        className="breath-circle"
-        animate={{
-          scale: [1, 1.5, 1],  
-          opacity: [0.8, 1, 0.8],
-          filter: ["blur(0.5px)", "blur(1.5px)", "blur(0.5px)"],
-
-        }}
-        transition={{
-          duration: 19, //4 + 7 + 8
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+   <Breath478/>
     </div>
   );
 }
