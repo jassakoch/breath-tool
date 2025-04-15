@@ -13,7 +13,7 @@ function App() {
 
         }}
         transition={{
-          duration: 4,
+          duration: 19, //4 + 7 + 8
           repeat: Infinity,
           ease: "easeInOut",
         }}
