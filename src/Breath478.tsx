@@ -1,49 +1,44 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import "./index.css";
-import { JSX } from "react/jsx-runtime";
-
-type BreathStage = {
-    label: string;
-    duration: number;
-    scale: number;
-
-};
-
-const BREATH_STAGES: BreathStage[] = [
-    { label: "Inhale", duration: 4000, scale: 1.5 },
-    { label: "Hold", duration: 7000, scale: 1.5 },
-    { label: "Exhale", duration: 8000, scale: 1 }
-]
-
-export default function Breath478(): JSX.Element {
-    const [stageIndex, setStageIndex] = useState<number>(0);
-    const currentStage = BREATH_STAGES[stageIndex];
 
 
-useEffect(() => {
-    const timer = setTimeout(() => {
-        setStageIndex((prev) => (prev + 1) % BREATH_STAGES.length);
+const BREATH_STAGES = [
+  { label: "Inhale", duration: 4, scale: 1.4, glow: 80 },
+  { label: "Hold", duration: 7, scale: 1.4, glow: 80 },
+  { label: "Exhale", duration: 8, scale: 1.0, glow: 30 },
+];
 
-    }, currentStage.duration)
-return () => clearTimeout(timer);
-}, [stageIndex])
+export default function BreathCycle478() {
+  const [stageIndex, setStageIndex] = useState(0);
+  const currentStage = BREATH_STAGES[stageIndex];
 
-return (
-    <div className="breath-wrapper">
-        <motion.div
-            className="breath-circle"
-            animate={{
-                scale: currentStage.scale,
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setStageIndex((prev) => (prev + 1) % BREATH_STAGES.length);
+    }, currentStage.duration * 1000);
 
-            }}
-            transition={{
-                duration: 1.5,
-                ease: "easeInOut",
-            }}
-            />
-<div className="breath-label"> {currentStage.label}</div>
+    return () => clearTimeout(timeout);
+  }, [stageIndex]);
+
+  return (
+    <div style={{ textAlign: "center" }}>
+      <motion.div
+        className="breath-circle"
+        animate={{
+          scale: currentStage.scale,
+          boxShadow: `0 0 ${currentStage.glow}px rgba(54, 174, 255, 0.5), 
+                      0 0 ${currentStage.glow + 20}px rgba(54, 174, 255, 0.3), 
+                      0 0 ${currentStage.glow + 40}px rgba(54, 174, 255, 0.2)`,
+        }}
+        transition={{
+          duration: currentStage.duration,
+          ease: "easeInOut",
+        }}
+        
+      />
+      <div className="breath-label">{currentStage.label}</div>
     </div>
-);
-    
-};
+  );
+}
+
