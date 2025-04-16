@@ -32,3 +32,27 @@
   color: #256fa1;
   font-weight: bold;
 }
+
+.breath-circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:url("/images/rippleEffect.jpg");
+  background-repeat: repeat;
+  background-size: 30% 30%;
+  animation: shimmer 10s linear infinite;
+  opacity: 0.3;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+

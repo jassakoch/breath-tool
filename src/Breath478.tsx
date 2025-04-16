@@ -43,6 +43,7 @@ export default function BreathCycle478() {
   
   return (
     <div style={{ textAlign: "center" }}>
+      <div className="breath-wrapper">
       <motion.div
         className="breath-circle"
         animate={{
@@ -59,6 +60,7 @@ export default function BreathCycle478() {
       />
       <div className="breath-label">{currentStage.label}</div>
       <div className="breath-countdown">{countdown}</div>
+      </div>
     </div>
   );
 }
