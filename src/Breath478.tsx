@@ -43,6 +43,8 @@ export default function BreathCycle478() {
   
   return (
     <div style={{ textAlign: "center" }}>
+     
+
       <div className="breath-wrapper">
       <motion.div
         className="breath-circle"
