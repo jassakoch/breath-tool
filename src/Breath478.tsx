@@ -43,27 +43,56 @@ export default function BreathCycle478() {
   
   return (
     <div style={{ textAlign: "center" }}>
-     
-
+      <svg width="0" height="0">
+        <defs>
+          <filter id="rippleEffect" x="-50%" y="-50%" width="200%" height="200%">
+            <feTurbulence
+              type="turbulence"
+              baseFrequency="0.01"
+              numOctaves="3"
+              result="turbulence"
+              seed="3"
+            >
+              <animate
+                attributeName="baseFrequency"
+                values="0.01; 0.02; 0.01"
+                dur="4s"
+                repeatCount="indefinite"
+              />
+            </feTurbulence>
+            <feDisplacementMap
+              in2="turbulence"
+              in="SourceGraphic"
+              scale="20"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </defs>
+      </svg>
+  
       <div className="breath-wrapper">
-      <motion.div
-        className="breath-circle"
-        animate={{
-          scale: currentStage.scale,
-          boxShadow: `0 0 ${currentStage.glow}px rgba(54, 174, 255, 0.5), 
-                      0 0 ${currentStage.glow + 20}px rgba(54, 174, 255, 0.3), 
-                      0 0 ${currentStage.glow + 40}px rgba(54, 174, 255, 0.2)`,
-        }}
-        transition={{
-          duration: currentStage.duration,
-          ease: "easeInOut",
-        }}
-        
-      />
-      <div className="breath-label">{currentStage.label}</div>
-      <div className="breath-countdown">{countdown}</div>
+        <motion.div
+          className="breath-circle"
+          style={{
+            filter: "url(#rippleEffect)",
+          }}
+          animate={{
+            scale: currentStage.scale,
+            boxShadow: `0 0 ${currentStage.glow}px rgba(54, 174, 255, 0.5), 
+                        0 0 ${currentStage.glow + 20}px rgba(54, 174, 255, 0.3), 
+                        0 0 ${currentStage.glow + 40}px rgba(54, 174, 255, 0.2)`,
+          }}
+          transition={{
+            duration: currentStage.duration,
+            ease: "easeInOut",
+          }}
+        />
+        <div className="breath-label">{currentStage.label}</div>
+        <div className="breath-countdown">{countdown}</div>
       </div>
     </div>
   );
+  
 }
 
