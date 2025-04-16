@@ -25,3 +25,10 @@
   font-size: 1.5rem;
   color: #3a9bdc;
 }
+
+.breath-countdown {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #256fa1;
+  font-weight: bold;
+}

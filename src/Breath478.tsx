@@ -4,23 +4,43 @@ import "./index.css";
 
 
 const BREATH_STAGES = [
-  { label: "Inhale", duration: 4, scale: 1.4, glow: 80 },
-  { label: "Hold", duration: 7, scale: 1.4, glow: 80 },
-  { label: "Exhale", duration: 8, scale: 1.0, glow: 30 },
+  { label: "Inhale", duration: 4, scale: 2, glow: 100 },
+  { label: "Hold", duration: 7, scale: 2, glow: 100 },
+  { label: "Exhale", duration: 8, scale: 1.0, glow: 40 },
 ];
+
+
 
 export default function BreathCycle478() {
   const [stageIndex, setStageIndex] = useState(0);
   const currentStage = BREATH_STAGES[stageIndex];
 
+  const [countdown, setCountdown] = useState(currentStage.duration)
+  
   useEffect(() => {
+    setCountdown(currentStage.duration);
+
+    const interval = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval); // stop early to avoid -1 flicker
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
     const timeout = setTimeout(() => {
       setStageIndex((prev) => (prev + 1) % BREATH_STAGES.length);
     }, currentStage.duration * 1000);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, [stageIndex]);
 
+  
   return (
     <div style={{ textAlign: "center" }}>
       <motion.div
@@ -38,6 +58,7 @@ export default function BreathCycle478() {
         
       />
       <div className="breath-label">{currentStage.label}</div>
+      <div className="breath-countdown">{countdown}</div>
     </div>
   );
 }
