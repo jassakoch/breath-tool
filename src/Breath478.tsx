@@ -49,9 +49,9 @@ export default function BreathCycle478() {
             <feTurbulence
               type="turbulence"
               baseFrequency="0.01"
-              numOctaves="3"
+              numOctaves="2"
               result="turbulence"
-              seed="3"
+              seed="2"
             >
               <animate
                 attributeName="baseFrequency"
@@ -63,7 +63,7 @@ export default function BreathCycle478() {
             <feDisplacementMap
               in2="turbulence"
               in="SourceGraphic"
-              scale="20"
+              scale="10"
               xChannelSelector="R"
               yChannelSelector="G"
             />
