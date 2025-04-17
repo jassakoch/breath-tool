@@ -1,6 +1,10 @@
 # 🌬️ Breath Tool – 4-7-8 Breathing App
 
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+
 ![Framer Motion](https://img.shields.io/badge/Framer--Motion-%23e86cfc?logo=framer&logoColor=white&style=for-the-badge)
+[![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 
 
 
